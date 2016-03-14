@@ -1,0 +1,19 @@
+
+
+###importar la matrix del
+indi3<-ts(read.csv(("C:\\Users\\SALA-C25\\Downloads\\tablas inegi.csv"), header = T), frequency = 4, start = 2005);
+class(indi3)
+desoparcial<- ts(indi3[,3], start = 2005, freq=4)
+asala<- ts (indi3[,2], start = 2005, freq= 4)
+til1<- ts (indi3[,3], start = 2005, freq=4)
+
+seriemultiple  <- ts.intersect(desoparcial,asala,til1)#### serie de tiem
+plot(seriemultiple, main="serie de tiempo múltiple", xlab="años", ylab="número de personas", col="pink")
+
+#### seoarar la serie de tiempo dependiendo del analisis
+
+seriemultiple05.09<-window(seriemultiple, start=c(2005,1), end=c(2009,4))
+seriemultiple10.15<-window(seriemultiple, start=c(2010,1), end=c(2015,4))
+plot(seriemultiple05.09, main="serie de tiempo multiple", xlab="años", ylab="numero de personas", col="blue")
+plot(seriemultiple10.15, main="serie de tiempo multiple", xlab="años", ylab="numero de personas", col="green")
+start(seriemultiple);end(seriemultiple)
